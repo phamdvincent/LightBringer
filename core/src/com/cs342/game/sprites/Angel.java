@@ -6,10 +6,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Array;
 
-/**
- * Created by Vincent on 7/17/17.
- */
+
 
 public class Angel {
 
@@ -22,13 +21,16 @@ public class Angel {
     private Rectangle bounds;
     private Texture texture;
     private Animation angelAnimation;
+    private Array<AngelShot> angelShots;
+    private int timer;
 
     public Angel(int x, int y) {
         position = new Vector3(x, y, 0);
         velocity = new Vector3(0, 0, 0);
         texture = new Texture("AngelSprite.png");
         angelAnimation = new Animation(new TextureRegion(texture), 4 , 0.5f);
-
+        angelShots = new Array<AngelShot>();
+        timer = 0;
         bounds = new Rectangle(x, y, TEXTURE_WIDTH, TEXTURE_HEIGHT);
 
     }
@@ -50,6 +52,31 @@ public class Angel {
 
     public TextureRegion getTexture() {
         return angelAnimation.getFrame();
+    }
+
+    public void shoot(float x, float y, float z, int frequency, float dt) {
+        timer++;
+        if(timer > frequency) {
+            angelShots.add(new AngelShot(((int) this.getPosition().x - 20), (int) this.getPosition().y));
+            timer = 0;
+        }
+        for(int i = 0; i < angelShots.size; i++) {
+            if(angelShots.get(i).getPosition().y < -300) {
+                angelShots.get(i).dispose();
+                angelShots.removeIndex(i);
+
+            }
+
+            angelShots.get(i).move(x, y, z);
+
+
+
+            angelShots.get(i).update(dt);
+        }
+    }
+
+    public Array<AngelShot> getShots() {
+        return angelShots;
     }
 
     public Rectangle getBounds() {

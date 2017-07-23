@@ -1,4 +1,4 @@
-#Tue Jul 18 00:16:22 CDT 2017
+#Sun Jul 23 14:44:09 CDT 2017
 base.0=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1
 renamed.0=classes.dex
 file.0=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex

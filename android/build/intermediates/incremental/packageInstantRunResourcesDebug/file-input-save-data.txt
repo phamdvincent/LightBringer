@@ -1,30 +1,33 @@
 #Internal package file, do not edit.
-#Thu Jul 20 19:33:45 CDT 2017
-2.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug
+#Sun Jul 23 14:43:56 CDT 2017
+2.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/res/resources-debug.ap_
 5.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/res/resources-debug.ap_/AndroidManifest.xml
 5.set=ANDROID_RESOURCE
 3.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug
-6.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/res/resources-debug.ap_/res/drawable-xxhdpi-v4/ic_launcher.png
-2.set=ASSET
+6.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug/fireball.png
+2.set=ANDROID_RESOURCE
 4.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug
 7.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug/bossSprite.png
 7.set=ASSET
-count=9
+count=10
 0.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug/AngelSprite.png
 5.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/res/resources-debug.ap_
-8.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug/background.png
+8.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/res/resources-debug.ap_/res/drawable-xxhdpi-v4/ic_launcher.png
 4.set=ASSET
-6.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/res/resources-debug.ap_
-1.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/res/resources-debug.ap_/resources.arsc
-1.set=ANDROID_RESOURCE
+6.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug
+1.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug/angelShot.png
+9.set=ASSET
+9.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug/background.png
+1.set=ASSET
 7.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug
-2.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug/angelShot.png
-6.set=ANDROID_RESOURCE
+2.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/res/resources-debug.ap_/resources.arsc
+6.set=ASSET
 0.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug
-8.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug
+8.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/res/resources-debug.ap_
 3.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug/badlogic.jpg
 3.set=ASSET
-1.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/res/resources-debug.ap_
+1.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug
+9.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug
 4.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug/background.jpg
-8.set=ASSET
+8.set=ANDROID_RESOURCE
 0.set=ASSET
