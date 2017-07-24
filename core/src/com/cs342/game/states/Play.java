@@ -64,12 +64,13 @@ class Play extends State{
             background2.getPosition().set(0, -LightBringer.HEIGHT + 20, 0);
         }
         angel.update(dt);
-
-        angel.shoot(0, -10f, 0, 5, dt);
-        boss.shoot(0, 10f, 0, 5,dt);
-
-
         boss.update(dt);
+
+        angel.shoot(0, -20f, 0, 5, dt);
+        boss.shoot(0, 20f, 0, 5, dt);
+
+
+
     }
 
 

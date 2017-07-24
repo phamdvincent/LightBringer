@@ -61,7 +61,7 @@ public class Angel {
             timer = 0;
         }
         for(int i = 0; i < angelShots.size; i++) {
-            if(angelShots.get(i).getPosition().y < -300) {
+            if(angelShots.get(i).getPosition().y < -200) {
                 angelShots.get(i).dispose();
                 angelShots.removeIndex(i);
 

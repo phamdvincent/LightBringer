@@ -7,9 +7,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
-/**
- * Created by Vincent on 7/17/17.
- */
 
 public class BossShot {
 
@@ -26,7 +23,7 @@ public class BossShot {
     public BossShot(int x, int y) {
         position = new Vector3(x, y, 0);
         velocity = new Vector3(0, 0, 0);
-        texture = new Texture("fireball.png");
+        texture = new Texture("fire.png");
 
         bounds = new Rectangle(x, y, TEXTURE_WIDTH, TEXTURE_HEIGHT);
 
