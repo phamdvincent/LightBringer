@@ -13,7 +13,6 @@ import com.badlogic.gdx.math.Vector3;
 
 public class AngelShot {
 
-    private static final int MOVEMENT = 100;
     private static final int TEXTURE_WIDTH = 10;
     private static final int TEXTURE_HEIGHT = 10;
 

@@ -10,7 +10,6 @@ public class DesktopLauncher {
 		config.width = LightBringer.WIDTH;
 		config.height = LightBringer.HEIGHT;
 		config.title = LightBringer.TITLE;
-
 		new LwjglApplication(new LightBringer(), config);
 	}
 }

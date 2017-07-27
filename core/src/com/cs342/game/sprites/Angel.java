@@ -12,7 +12,6 @@ import com.badlogic.gdx.utils.Array;
 
 public class Angel {
 
-    private static final int MOVEMENT = 100;
     private static final int TEXTURE_WIDTH = 25;
     private static final int TEXTURE_HEIGHT = 20;
 
@@ -24,7 +23,7 @@ public class Angel {
     private Array<AngelShot> angelShots;
     private int timer;
 
-    public Angel(int x, int y) {
+    public Angel(float x, float y) {
         position = new Vector3(x, y, 0);
         velocity = new Vector3(0, 0, 0);
         texture = new Texture("AngelSprite.png");
@@ -68,8 +67,6 @@ public class Angel {
             }
 
             angelShots.get(i).move(x, y, z);
-
-
 
             angelShots.get(i).update(dt);
         }

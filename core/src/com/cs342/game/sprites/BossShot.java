@@ -10,7 +10,6 @@ import com.badlogic.gdx.math.Vector3;
 
 public class BossShot {
 
-    private static final int MOVEMENT = 100;
     private static final int TEXTURE_WIDTH = 10;
     private static final int TEXTURE_HEIGHT = 10;
 
@@ -18,11 +17,16 @@ public class BossShot {
     private Vector3 velocity;
     private Rectangle bounds;
     private Texture texture;
-    private Animation angelShotAnimation;
+    private float pathX;
+    private float pathY;
+    private float pathZ;
 
-    public BossShot(int x, int y) {
+    public BossShot(int x, int y, float pathX, float pathY, float pathZ) {
         position = new Vector3(x, y, 0);
-        velocity = new Vector3(0, 0, 0);
+        velocity = new Vector3(pathX, pathY, pathZ);
+        this.pathX = pathX;
+        this.pathY = pathY;
+        this.pathZ = pathZ;
         texture = new Texture("fire.png");
 
         bounds = new Rectangle(x, y, TEXTURE_WIDTH, TEXTURE_HEIGHT);
@@ -35,7 +39,7 @@ public class BossShot {
     }
 
     public void move(float x, float y, float z) {
-        position.add(x,y,z);
+        position.add(pathX, pathY, pathZ);
 
     }
 

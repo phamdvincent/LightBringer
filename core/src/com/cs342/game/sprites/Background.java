@@ -7,7 +7,7 @@ public class Background {
     private Texture background;
     private Vector3 position;
 
-    public Background(Texture texture, int x, int y, int z) {
+    public Background(Texture texture, float x, float y, float z) {
         this.background = texture;
         position = new Vector3(x, y , z);
     }
