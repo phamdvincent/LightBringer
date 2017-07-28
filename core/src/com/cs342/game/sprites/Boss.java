@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 
-
+import java.lang.Math;
 
 public class Boss {
 
@@ -22,6 +22,9 @@ public class Boss {
     private Animation bossAnimation;
     private Array<BossShot> bossShots;
     private int timer;
+    private int distNum;
+    private int health;
+
 
     public Boss(int x, int y) {
         position = new Vector3(x, y, 0);
@@ -30,9 +33,10 @@ public class Boss {
         bossAnimation = new Animation(new TextureRegion(texture), 3 , 0.5f);
         bossShots = new Array<BossShot>();
         timer = 0;
+        distNum = 0;
+        health = 1000;
 
         bounds = new Rectangle(x, y, TEXTURE_WIDTH, TEXTURE_HEIGHT);
-
     }
 
     public void update(float dt) {
@@ -54,34 +58,76 @@ public class Boss {
         return bossAnimation.getFrame();
     }
 
-    public void shoot(int frequency, float dt, float width, float height) {
+    public void shoot(float x, float y, float z, int frequency, float dt) {
+        timer++;
+        if(timer > frequency) {
+            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, 0, 10, 0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y,-20f,10f,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, 20f,10f,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, 10f,0,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, -10f,0,0));
+            timer = 0;
+        }
+        for(int i = 0; i < bossShots.size; i++) {
+            if(bossShots.get(i).getPosition().y > 900) {
+                bossShots.get(i).dispose();
+                bossShots.removeIndex(i);
+
+            }
+
+            bossShots.get(i).move();
+
+
+
+            bossShots.get(i).update(dt);
+        }
+    }
+
+    public void shoot2(int frequency, float dt, float width, float height) {
 
 
         if(timer == 0) {
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y,0,10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y,-10f,10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, 10f,10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, 10f,0,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, -10f,0,0));
 
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, -10f,-10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, 0,-10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, 10f,-10f,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,0,10f,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,-10f,10f,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 10f,10f,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 10f,0,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, -10f,0,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, -10f,-10f,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 0,-10f,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 10f,-10f,0));
+
+
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,0,10f,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,-10f,10f,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 10f,10f,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 10f,0,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, -10f,0,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, -10f,-10f,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 0,-10f,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 10f,-10f,0));
             timer = 1;
+
         }
-        for(int i = 0; i < bossShots.size; i++) {
-            if (bossShots.get(i).getPosition().y > height || bossShots.get(i).getPosition().y < -10 || bossShots.get(i).getPosition().x > width || bossShots.get(i).getPosition().x < -10 ) {
-                bossShots.get(i).getPosition().set(this.getPosition().x -20, this.getPosition().y - 20, 0);
+        if(distNum > 100)   {
+        for(int i = 0; i < bossShots.size/2; i++) {
 
-
+                bossShots.get(i).getPosition().set(this.getPosition().x -40, this.getPosition().y - 40, 0);
+                distNum = 0;
             }
         }
 
         for(int i = 0; i < bossShots.size; i++) {
-            bossShots.get(i).move(0, 10, 0);
+            bossShots.get(i).move();
 
             bossShots.get(i).update(dt);
         }
+
+
+
+
+
+        distNum++;
     }
 
     public Array<BossShot> getShots() {
