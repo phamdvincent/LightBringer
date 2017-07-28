@@ -98,7 +98,6 @@ class Play extends State{
                 bossMove = false;
             boss.getPosition().add(-5f, 0, 0);
         }
-//aghhhhhh
     }
 
     public void moveMyMinion(){
