@@ -78,11 +78,11 @@ class Play extends State{
 
         minion.update(dt);
         boss.update(dt);
-        angel.shoot(0, -20f, 0, 15, dt);
-        minion.shoot(70, dt, cam.viewportWidth,cam.viewportHeight);
+        angel.shoot(0, -30f, 0, 5, dt);
+        minion.shoot(20,20,dt);
 
         //boss.shoot(0, 10f, 0, 20, dt);
-        boss.shoot(70, dt, cam.viewportWidth,cam.viewportHeight);
+        boss.shoot2(20,20,dt);
 
     }
 
@@ -147,14 +147,14 @@ class Play extends State{
         sb.draw(background2.getTexture(),background2.getPosition().x,background2.getPosition().y, cam.viewportWidth, cam.viewportHeight + 10);
         sb.draw(angel.getTexture(), angel.getPosition().x, angel.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 20, cam.viewportHeight/25,3.0f, 3.0f, 180.0f);
         sb.draw(minion.getTexture(), minion.getPosition().x, minion.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 20, cam.viewportHeight / 25, 3.0f, 3.0f, 180.0f);
-//        sb.draw(boss.getTexture(), boss.getPosition().x, boss.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 20, cam.viewportHeight / 25, 3.0f, 3.0f, 180.0f);
+       sb.draw(boss.getTexture(), boss.getPosition().x, boss.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 20, cam.viewportHeight / 25, 3.0f, 3.0f, 180.0f);
 
         for(AngelShot s : angel.getShots() ) {
-            sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 40, cam.viewportHeight / 40, 3.0f, 3.0f, 180.0f);
+            sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 40, cam.viewportHeight / 40, 1.0f, 3.0f, 180.0f);
         }
-//        for(BossShot s : boss.getShots() ) {
-//            sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, cam.viewportWidth / 20, cam.viewportHeight / 20);
-//        }
+        for(BossShot s : boss.getShots() ) {
+           sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, cam.viewportWidth / 20, cam.viewportHeight / 20);
+        }
         for(MinionShot s : minion.getShots() ) {
             sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, cam.viewportWidth / 20, cam.viewportHeight / 20);
         }

@@ -6,22 +6,22 @@
     density="420dpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1501273997610"
+    timestamp="1501277082869"
     token="2866098809263359618"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="112" />
+        duration="159" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="358" />
+        duration="10" />
     <task
         name="verifier"
-        duration="3" />
+        duration="2" />
 
     <artifact
         location="/Users/Vincent/Documents/LightBringer/android/build/intermediates/split-apk/debug/slices/slice_2.apk"
@@ -88,9 +88,6 @@
             location="/Users/Vincent/Documents/LightBringer/android/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Vincent/Documents/LightBringer/android/build/intermediates/split-apk/debug/slices/slice_6.apk"
-            type="SPLIT" />
-        <artifact
             location="/Users/Vincent/Documents/LightBringer/android/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
@@ -108,7 +105,18 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1501273997610"
+        timestamp="1501277027065"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/Vincent/Documents/LightBringer/android/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Vincent/Documents/LightBringer/android/build/outputs/apk/android-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1501277082869"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/Vincent/Documents/LightBringer/android/build/intermediates/split-apk/debug/slices/slice_2.apk"

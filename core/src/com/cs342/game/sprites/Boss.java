@@ -83,34 +83,34 @@ public class Boss {
         }
     }
 
-    public void shoot2(int frequency, float dt, float width, float height) {
+    public void shoot2(float x, float y, float dt) {
 
 
         if(timer == 0) {
 
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,0,10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,-10f,10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 10f,10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 10f,0,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, -10f,0,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, -10f,-10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 0,-10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 10f,-10f,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,0, y,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,-x, y,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, x, y,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, x,0,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, -x,0,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, -x,-y,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 0,-y,0));
+            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, x,-y,0));
 
 
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,0,10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,-10f,10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 10f,10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 10f,0,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, -10f,0,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, -10f,-10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 0,-10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 10f,-10f,0));
+//            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,0,10f,0));
+//            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,-10f,10f,0));
+//            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 10f,10f,0));
+//            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 10f,0,0));
+//            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, -10f,0,0));
+//            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, -10f,-10f,0));
+//            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 0,-10f,0));
+//            bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 10f,-10f,0));
             timer = 1;
 
         }
-        if(distNum > 100)   {
-        for(int i = 0; i < bossShots.size/2; i++) {
+        if(distNum > 85)   {
+        for(int i = 0; i < bossShots.size; i++) {
 
                 bossShots.get(i).getPosition().set(this.getPosition().x -40, this.getPosition().y - 40, 0);
                 distNum = 0;

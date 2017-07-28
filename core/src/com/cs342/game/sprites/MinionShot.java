@@ -38,7 +38,7 @@ public class MinionShot {
         bounds.setPosition(position.x, position.y);
     }
 
-    public void move(float x, float y, float z) {
+    public void move() {
         position.add(pathX, pathY, pathZ);
 
     }
