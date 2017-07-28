@@ -54,32 +54,7 @@ public class Boss {
         return bossAnimation.getFrame();
     }
 
-    public void shoot(float x, float y, float z, int frequency, float dt) {
-        timer++;
-        if(timer > frequency) {
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, 0, 10, 0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y,-20f,10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, 20f,10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, 10f,0,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, -10f,0,0));
-            timer = 0;
-        }
-        for(int i = 0; i < bossShots.size; i++) {
-            if(bossShots.get(i).getPosition().y > 900) {
-                bossShots.get(i).dispose();
-                bossShots.removeIndex(i);
-
-            }
-
-            bossShots.get(i).move(x, y, z);
-
-
-
-            bossShots.get(i).update(dt);
-        }
-    }
-
-    public void shoot2(int frequency, float dt, float width, float height) {
+    public void shoot(int frequency, float dt, float width, float height) {
 
 
         if(timer == 0) {
