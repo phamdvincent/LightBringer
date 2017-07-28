@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Jul 23 15:53:43 CDT 2017
+#Fri Jul 28 15:33:22 CDT 2017
 25.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar/com/badlogic/gdx/utils/XmlReader.rl
 25.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar
 22.set=DEX
@@ -11,7 +11,7 @@
 30.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/res/resources-debug.ap_
 14.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug
 16.set=ASSET
-count=35
+count=36
 6.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar/com/badlogic/gdx/utils/arial-15.png
 6.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar
 26.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/arm64-v8a/libgdx.so
@@ -70,6 +70,7 @@ count=35
 5.set=DEX
 18.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/arm64-v8a/libgdx-box2d.so
 9.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main
+35.set=ASSET
 18.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main
 11.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug/angelShot.png
 29.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/armeabi/libgdx-box2d.so
@@ -98,6 +99,8 @@ count=35
 9.set=NATIVE_RESOURCE
 24.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar
 12.set=ANDROID_RESOURCE
+35.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug/minionSprite.png
+35.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug
 28.set=ASSET
 17.set=NATIVE_RESOURCE
 13.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar/com/badlogic/gdx/graphics/g3d/particles/particles.fragment.glsl

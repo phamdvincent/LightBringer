@@ -4,17 +4,18 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.cs342.game.LightBringer;
-
-/**
- * Created by Vincent on 7/17/17.
- */
-
-
 
 public class Menu extends State {
 
     private Texture background;
+    private TextButton button;
+    private Skin skin;
+
     public  Menu(GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(true);
@@ -38,7 +39,8 @@ public class Menu extends State {
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
         sb.begin();
-        sb.draw(background,cam.position.x - (cam.viewportWidth / 2), 0);//,LightBringer.WIDTH,LightBringer.HEIGHT);
+        sb.draw(background, 0, 0, cam.viewportWidth, cam.viewportHeight);
+
         sb.end();
     }
 
