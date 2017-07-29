@@ -1,4 +1,0 @@
-#Sat Jul 29 12:37:16 CDT 2017
-base.0=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6
-renamed.0=classes.dex
-file.0=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex
