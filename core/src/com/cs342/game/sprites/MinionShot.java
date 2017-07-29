@@ -20,6 +20,7 @@ public class MinionShot {
     private float pathX;
     private float pathY;
     private float pathZ;
+    private boolean hit;
 
     public MinionShot(int x, int y, float pathX, float pathY, float pathZ) {
         position = new Vector3(x, y, 0);
@@ -47,10 +48,26 @@ public class MinionShot {
         return position;
     }
 
+    public void setHit(boolean x) {
+        hit = x;
+    }
+
+    public boolean hit() {
+        return hit;
+    }
+
     public Texture getTexture() {return texture;}
+
+    public void setBounds(float width, float height) {
+        bounds.setSize(width, height);
+    }
 
     public Rectangle getBounds() {
         return bounds;
+    }
+
+    public boolean collides(Rectangle object) {
+        return object.overlaps(this.getBounds());
     }
 
     public void dispose() {

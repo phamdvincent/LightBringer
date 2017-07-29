@@ -6,25 +6,25 @@
     density="420dpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1501277082869"
+    timestamp="1501349834471"
     token="2866098809263359618"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="159" />
+        duration="140" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="10" />
+        duration="13" />
     <task
         name="verifier"
-        duration="2" />
+        duration="4" />
 
     <artifact
-        location="/Users/Vincent/Documents/LightBringer/android/build/intermediates/split-apk/debug/slices/slice_2.apk"
+        location="/Users/Vincent/Documents/LightBringer/android/build/intermediates/split-apk/debug/slices/slice_6.apk"
         type="SPLIT" />
     <artifact
         location="/Users/Vincent/Documents/LightBringer/android/build/outputs/apk/android-debug.apk"
@@ -105,21 +105,26 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1501277027065"
+        timestamp="1501349712834"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/Users/Vincent/Documents/LightBringer/android/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            location="/Users/Vincent/Documents/LightBringer/android/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1501349787799"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/Vincent/Documents/LightBringer/android/build/outputs/apk/android-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1501277082869"
+        timestamp="1501349834471"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/Users/Vincent/Documents/LightBringer/android/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            location="/Users/Vincent/Documents/LightBringer/android/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
             location="/Users/Vincent/Documents/LightBringer/android/build/outputs/apk/android-debug.apk"

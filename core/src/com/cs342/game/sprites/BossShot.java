@@ -20,6 +20,7 @@ public class BossShot {
     private float pathX;
     private float pathY;
     private float pathZ;
+    private boolean hit;
 
     public BossShot(int x, int y, float pathX, float pathY, float pathZ) {
         position = new Vector3(x, y, 0);
@@ -47,7 +48,23 @@ public class BossShot {
         return position;
     }
 
+    public void setHit(boolean x) {
+        hit = x;
+    }
+
+    public boolean hit() {
+        return hit;
+    }
+
     public Texture getTexture() {return texture;}
+
+    public void setBounds(float width, float height) {
+        bounds.setSize(width, height);
+    }
+
+    public boolean collides(Rectangle object) {
+        return object.overlaps(this.getBounds());
+    }
 
     public Rectangle getBounds() {
         return bounds;

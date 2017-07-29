@@ -23,6 +23,8 @@ public class Minion {
     private Array<MinionShot> minionShots;
     private int timer;
     private int distNum;
+    private boolean isDead;
+    private int health;
 
     public Minion(int x, int y) {
         position = new Vector3(x, y, 0);
@@ -32,6 +34,8 @@ public class Minion {
         minionShots = new Array<MinionShot>();
         timer = 0;
         distNum = 0;
+        isDead = false;
+        health = 50;
 
         bounds = new Rectangle(x, y, TEXTURE_WIDTH, TEXTURE_HEIGHT);
 
@@ -75,9 +79,9 @@ public class Minion {
             timer = 1;
 
         }
-        if(distNum > 85)   {
+        if(distNum > 200)   {
             for(int i = 0; i < minionShots.size; i++) {
-
+                minionShots.get(i).setHit(false);
                 minionShots.get(i).getPosition().set(this.getPosition().x -40, this.getPosition().y - 40, 0);
                 distNum = 0;
             }
@@ -100,8 +104,32 @@ public class Minion {
         return minionShots;
     }
 
+    public void setBounds(float width, float height) {
+        bounds.setSize(width, height);
+    }
+
     public Rectangle getBounds() {
         return bounds;
+    }
+
+    public void setStatus(boolean x) {
+        isDead = x;
+    }
+
+    public boolean getStatus() {
+        return isDead;
+    }
+
+    public boolean collides(Rectangle object) {
+        return object.overlaps(this.getBounds());
+    }
+
+    public void loseHealth(int amount) {
+        health -= amount;
+    }
+
+    public int getHealth() {
+        return this.health;
     }
 
     public void dispose() {

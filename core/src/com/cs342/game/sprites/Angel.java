@@ -22,6 +22,11 @@ public class Angel {
     private Animation angelAnimation;
     private Array<AngelShot> angelShots;
     private int timer;
+    private boolean isDead;
+    private int health;
+
+    private float rectWidth;
+    private float rectHeight;
 
     public Angel(float x, float y) {
         position = new Vector3(x, y, 0);
@@ -30,7 +35,10 @@ public class Angel {
         angelAnimation = new Animation(new TextureRegion(texture), 4 , 0.5f);
         angelShots = new Array<AngelShot>();
         timer = 0;
-        bounds = new Rectangle(x, y, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+
+        bounds = new Rectangle(x, y, 0, 0);
+        isDead = false;
+        health = 100;
 
     }
 
@@ -76,8 +84,32 @@ public class Angel {
         return angelShots;
     }
 
+    public void setBounds(float width, float height) {
+        bounds.setSize(width, height);
+    }
+
     public Rectangle getBounds() {
         return bounds;
+    }
+
+    public void setStatus(boolean x) {
+        isDead = x;
+    }
+
+    public boolean getStatus() {
+        return isDead;
+    }
+
+    public boolean collides(Rectangle object) {
+        return object.overlaps(this.getBounds());
+    }
+
+    public void loseHealth(int amount) {
+        health -= amount;
+    }
+
+    public int getHealth() {
+        return this.health;
     }
 
     public void dispose() {

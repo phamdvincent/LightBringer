@@ -24,6 +24,7 @@ public class Boss {
     private int timer;
     private int distNum;
     private int health;
+    private boolean isDead;
 
 
     public Boss(int x, int y) {
@@ -35,6 +36,7 @@ public class Boss {
         timer = 0;
         distNum = 0;
         health = 1000;
+        isDead = false;
 
         bounds = new Rectangle(x, y, TEXTURE_WIDTH, TEXTURE_HEIGHT);
     }
@@ -58,32 +60,8 @@ public class Boss {
         return bossAnimation.getFrame();
     }
 
-    public void shoot(float x, float y, float z, int frequency, float dt) {
-        timer++;
-        if(timer > frequency) {
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, 0, 10, 0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y,-20f,10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, 20f,10f,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, 10f,0,0));
-            bossShots.add(new BossShot(((int) this.getPosition().x - 20), (int) this.getPosition().y, -10f,0,0));
-            timer = 0;
-        }
-        for(int i = 0; i < bossShots.size; i++) {
-            if(bossShots.get(i).getPosition().y > 900) {
-                bossShots.get(i).dispose();
-                bossShots.removeIndex(i);
 
-            }
-
-            bossShots.get(i).move();
-
-
-
-            bossShots.get(i).update(dt);
-        }
-    }
-
-    public void shoot2(float x, float y, float dt) {
+    public void shoot(float x, float y, float dt) {
 
 
         if(timer == 0) {
@@ -109,9 +87,9 @@ public class Boss {
             timer = 1;
 
         }
-        if(distNum > 85)   {
+        if(distNum > 200)   {
         for(int i = 0; i < bossShots.size; i++) {
-
+                bossShots.get(i).setHit(false);
                 bossShots.get(i).getPosition().set(this.getPosition().x -40, this.getPosition().y - 40, 0);
                 distNum = 0;
             }
@@ -134,8 +112,32 @@ public class Boss {
         return bossShots;
     }
 
+    public void setBounds(float width, float height) {
+        bounds.setSize(width, height);
+    }
+
     public Rectangle getBounds() {
         return bounds;
+    }
+
+    public void setStatus(boolean x) {
+        isDead = x;
+    }
+
+    public boolean getStatus() {
+        return isDead;
+    }
+
+    public boolean collides(Rectangle object) {
+        return object.overlaps(this.getBounds());
+    }
+
+    public void loseHealth(int amount) {
+        health -= amount;
+    }
+
+    public int getHealth() {
+        return this.health;
     }
 
     public void dispose() {

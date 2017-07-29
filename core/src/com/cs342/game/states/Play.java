@@ -45,6 +45,9 @@ class Play extends State{
         minion = new Minion(200, 40);
         minionMoveLeft = true;
         minionMoveDown = true;
+        angel.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
+        boss.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
+        minion.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
 
     }
 
@@ -55,34 +58,46 @@ class Play extends State{
             angel.move(Gdx.input.getX(),Gdx.input.getY());
         }
 
-        if(Gdx.input.isKeyJustPressed(X))
-            angel = null;
+        if(Gdx.input.isKeyJustPressed(X)) {
+            angel.setStatus(true);
+            boss.setStatus(true);
+            minion.setStatus(true);
+        }
+            //angel = null;
+
     }
 
     @Override
     public void update(float dt) {
         handleInput();
-        background.move(0, 20f, 0);
+        background.move(0, 5f, 0);
         if(background.getPosition().y >= cam.viewportHeight) {
             background.getPosition().set(0, -cam.viewportHeight, 0);
         }
-        background2.move(0, 20f, 0);
+        background2.move(0, 5f, 0);
         if(background2.getPosition().y >= cam.viewportHeight) {
             background2.getPosition().set(0, -cam.viewportHeight, 0);
         }
-        angel.update(dt);
 
-        moveMyBoss();
+        if(angel.getStatus() == false) {
+            angel.update(dt);
+            angel.shoot(0, -30f, 0, 5, dt);
+        }
 
-        moveMyMinion();
+        if(boss.getStatus() == false) {
+            moveMyBoss();
+            boss.update(dt);
+            boss.shoot(2,2,dt);
+        }
 
-        minion.update(dt);
-        boss.update(dt);
-        angel.shoot(0, -30f, 0, 5, dt);
-        minion.shoot(20,20,dt);
 
-        //boss.shoot(0, 10f, 0, 20, dt);
-        boss.shoot2(20,20,dt);
+        if(minion.getStatus() == false) {
+            moveMyMinion();
+            minion.update(dt);
+            minion.shoot(2,2,dt);
+        }
+
+        System.out.println("Health: " + angel.getHealth());
 
     }
 
@@ -145,19 +160,44 @@ class Play extends State{
         sb.begin();
         sb.draw(background.getTexture(),background.getPosition().x,background.getPosition().y, cam.viewportWidth, cam.viewportHeight + 10);
         sb.draw(background2.getTexture(),background2.getPosition().x,background2.getPosition().y, cam.viewportWidth, cam.viewportHeight + 10);
-        sb.draw(angel.getTexture(), angel.getPosition().x, angel.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 20, cam.viewportHeight/25,3.0f, 3.0f, 180.0f);
-        sb.draw(minion.getTexture(), minion.getPosition().x, minion.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 20, cam.viewportHeight / 25, 3.0f, 3.0f, 180.0f);
-       sb.draw(boss.getTexture(), boss.getPosition().x, boss.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 20, cam.viewportHeight / 25, 3.0f, 3.0f, 180.0f);
 
-        for(AngelShot s : angel.getShots() ) {
-            sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 40, cam.viewportHeight / 40, 1.0f, 3.0f, 180.0f);
+        if(angel.getStatus() == false) {
+            sb.draw(angel.getTexture(), angel.getPosition().x, angel.getPosition().y, 50.0f, 40.0f, cam.viewportWidth / 10, cam.viewportHeight/13,1.0f, 1.0f, 180.0f);
+            for(AngelShot s : angel.getShots() ) {
+                s.setBounds(cam.viewportWidth / 40, cam.viewportHeight / 40);
+                sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 40, cam.viewportHeight / 40, 1.0f, 1.0f, 180.0f);
+            }
         }
-        for(BossShot s : boss.getShots() ) {
-           sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, cam.viewportWidth / 20, cam.viewportHeight / 20);
+
+        if(boss.getStatus() == false) {
+            sb.draw(boss.getTexture(), boss.getPosition().x, boss.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 10, cam.viewportHeight / 13, 1.0f, 1.0f, 180.0f);
+            for(BossShot s : boss.getShots() ) {
+                if(s.collides(angel.getBounds()) && s.hit() == false){
+                    s.setHit(true);
+                    angel.loseHealth(1);
+                }
+                else if(s.hit() == false){
+                    s.setBounds(cam.viewportWidth / 20, cam.viewportHeight / 20);
+                    sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, cam.viewportWidth / 20, cam.viewportHeight / 20);
+                }
+            }
         }
-        for(MinionShot s : minion.getShots() ) {
-            sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, cam.viewportWidth / 20, cam.viewportHeight / 20);
+
+        if(minion.getStatus() == false) {
+            sb.draw(minion.getTexture(), minion.getPosition().x, minion.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 10, cam.viewportHeight / 13, 1.0f, 1.0f, 180.0f);
+            for(MinionShot s : minion.getShots() ) {
+                if(s.collides(angel.getBounds()) && s.hit() == false){
+                    s.setHit(true);
+                    angel.loseHealth(1);
+                }
+                else if(s.hit() == false){
+                    s.setBounds(cam.viewportWidth / 20, cam.viewportHeight / 20);
+                    sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, cam.viewportWidth / 20, cam.viewportHeight / 20);
+                }
+            }
         }
+
+
         sb.end();
     }
 
