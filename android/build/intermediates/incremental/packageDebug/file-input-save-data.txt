@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Jul 30 12:22:23 CDT 2017
+#Sun Jul 30 13:27:32 CDT 2017
 25.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar/com/badlogic/gdx/utils/XmlReader.rl
 25.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar
 22.set=JAVA_RESOURCE

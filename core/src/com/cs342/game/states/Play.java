@@ -32,8 +32,14 @@ class Play extends State{
     private Texture bg;
     private boolean bossMove;
     private Minion minion;
+    private Minion minion2;
+    private Minion minion3;
     private boolean minionMoveDown;
     private boolean minionMoveLeft;
+    private boolean minionMoveDown2;
+    private boolean minionMoveLeft2;
+    private boolean minionMoveDown3;
+    private boolean minionMoveLeft3;
     private BitmapFont font;
     private BitmapFont font2;
 
@@ -49,6 +55,12 @@ class Play extends State{
         minion = new Minion(200, 40);
         minionMoveLeft = true;
         minionMoveDown = true;
+        minion2 = new Minion(300, 200);
+        minionMoveLeft2 = true;
+        minionMoveDown2 = true;
+        minion3 = new Minion(800, 600);
+        minionMoveLeft3 = true;
+        minionMoveDown3 = true;
         angel.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
         boss.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
         minion.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
@@ -105,7 +117,7 @@ class Play extends State{
         if(boss.getStatus() == false) {
             moveMyBoss();
             boss.update(dt);
-            boss.shoot(15,15,dt);
+            boss.shoot(20,20,dt);
             boss.straightShoot(0,25,dt);
         }
 
@@ -114,6 +126,18 @@ class Play extends State{
             moveMyMinion();
             minion.update(dt);
             minion.shoot(15,15,dt);
+        }
+
+        if(minion2.getStatus() == false && boss.getHealth() < 400) {
+            moveMyMinion2();
+            minion2.update(dt);
+            minion2.shoot(15,15,dt);
+        }
+
+        if(minion3.getStatus() == false && boss.getHealth() < 300) {
+            moveMyMinion3();
+            minion3.update(dt);
+            minion3.shoot(15,15,dt);
         }
 
         //System.out.println("Health: " + angel.getHealth());
@@ -170,6 +194,87 @@ class Play extends State{
                 minionMoveDown = true;
             }
             minion.getPosition().add(5, -5, 0);
+        }
+    }
+
+
+
+
+    public void moveMyMinion2(){
+        if(minionMoveDown2 == true && minionMoveLeft2 == true) {
+            if(minion2.getPosition().x < 40) {
+                minionMoveLeft2 = false;
+            }
+            if(minion2.getPosition().y >= cam.viewportHeight - 20) {
+                minionMoveDown2 = false;
+            }
+            minion2.getPosition().add(-5, 5, 0);
+        }
+        if(minionMoveDown2 == true && minionMoveLeft2 == false) {
+            if(minion2.getPosition().x >= cam.viewportWidth - 20) {
+                minionMoveLeft2 = true;
+            }
+            if(minion2.getPosition().y >= cam.viewportHeight - 20) {
+                minionMoveDown2 = false;
+            }
+            minion2.getPosition().add(5, 5, 0);
+        }
+        if(minionMoveDown2 == false && minionMoveLeft2 == true){
+            if(minion2.getPosition().x < 40) {
+                minionMoveLeft2 = false;
+            }
+            if(minion2.getPosition().y <= 40) {
+                minionMoveDown2 = true;
+            }
+            minion2.getPosition().add(-5, -5, 0);
+        }
+        if(minionMoveDown2 == false && minionMoveLeft2 == false){
+            if(minion2.getPosition().x >= cam.viewportWidth - 20) {
+                minionMoveLeft2 = true;
+            }
+            if(minion2.getPosition().y <= 40) {
+                minionMoveDown2 = true;
+            }
+            minion2.getPosition().add(5, -5, 0);
+        }
+    }
+
+    public void moveMyMinion3(){
+        if(minionMoveDown3 == true && minionMoveLeft3 == true) {
+            if(minion3.getPosition().x < 40) {
+                minionMoveLeft3 = false;
+            }
+            if(minion3.getPosition().y >= cam.viewportHeight - 20) {
+                minionMoveDown3 = false;
+            }
+            minion3.getPosition().add(-5, 5, 0);
+        }
+        if(minionMoveDown3 == true && minionMoveLeft3 == false) {
+            if(minion3.getPosition().x >= cam.viewportWidth - 20) {
+                minionMoveLeft3 = true;
+            }
+            if(minion3.getPosition().y >= cam.viewportHeight - 20) {
+                minionMoveDown3 = false;
+            }
+            minion3.getPosition().add(5, 5, 0);
+        }
+        if(minionMoveDown3 == false && minionMoveLeft3 == true){
+            if(minion3.getPosition().x < 40) {
+                minionMoveLeft3 = false;
+            }
+            if(minion3.getPosition().y <= 40) {
+                minionMoveDown3 = true;
+            }
+            minion3.getPosition().add(-5, -5, 0);
+        }
+        if(minionMoveDown3 == false && minionMoveLeft3 == false){
+            if(minion3.getPosition().x >= cam.viewportWidth - 20) {
+                minionMoveLeft3 = true;
+            }
+            if(minion3.getPosition().y <= 40) {
+                minionMoveDown3 = true;
+            }
+            minion3.getPosition().add(5, -5, 0);
         }
     }
 
@@ -232,8 +337,45 @@ class Play extends State{
             }
         }
 
-        font.draw(sb, "Health: " + angel.getHealth(), 0, cam.viewportHeight - font.getData().capHeight);
-        font2.draw(sb, "Boss: " + boss.getHealth(), cam.viewportWidth/2, cam.viewportHeight - font.getData().capHeight);
+
+
+
+        if(minion2.getStatus() == false && boss.getHealth() < 400) {
+            sb.draw(minion2.getTexture(), minion2.getPosition().x, minion2.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 10, cam.viewportHeight / 13, 1.0f, 1.0f, 180.0f);
+            for(MinionShot s : minion2.getShots() ) {
+                if(s.collides(angel.getBounds()) && s.hit() == false){
+                    s.setHit(true);
+                    angel.loseHealth(1);
+                }
+                else if(s.hit() == false){
+                    s.setBounds(cam.viewportWidth / 20, cam.viewportHeight / 20);
+                    sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, cam.viewportWidth / 20, cam.viewportHeight / 20);
+                }
+            }
+        }
+
+
+
+
+        if(minion3.getStatus() == false && boss.getHealth() < 300) {
+            sb.draw(minion3.getTexture(), minion3.getPosition().x, minion3.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 10, cam.viewportHeight / 13, 1.0f, 1.0f, 180.0f);
+            for(MinionShot s : minion3.getShots() ) {
+                if(s.collides(angel.getBounds()) && s.hit() == false){
+                    s.setHit(true);
+                    angel.loseHealth(1);
+                }
+                else if(s.hit() == false){
+                    s.setBounds(cam.viewportWidth / 20, cam.viewportHeight / 20);
+                    sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, cam.viewportWidth / 20, cam.viewportHeight / 20);
+                }
+            }
+        }
+
+
+
+
+        font.draw(sb, "Health: " + angel.getHealth(), 0, 0);
+        font2.draw(sb, "Boss: " + boss.getHealth(), cam.viewportWidth/2, 0);
 
 
         sb.end();

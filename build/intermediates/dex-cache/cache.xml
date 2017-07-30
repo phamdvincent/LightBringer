@@ -7,7 +7,7 @@
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="64ecffb270572e55d915bb0c259f70b5e60074fe">
+        sha1="78a140cc42366e6853e57c9e54cc305a1ed81eed">
         <dex dex="/Users/Vincent/Documents/LightBringer/android/build/intermediates/pre-dexed/debug/core-1.0_7e6c6bcb582c5d5a4f11db0845ad678334c6824a.jar" />
     </item>
 

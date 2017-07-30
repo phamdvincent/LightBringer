@@ -41,7 +41,7 @@ public class Boss {
         timer2 = 0;
         distNum = 0;
         distNum2 = 0;
-        health = 1000;
+        health = 500;
         isDead = false;
 
         bounds = new Rectangle(x, y, TEXTURE_WIDTH, TEXTURE_HEIGHT);
