@@ -15,6 +15,7 @@ import com.cs342.game.sprites.BossShot;
 import com.cs342.game.sprites.Minion;
 import com.cs342.game.sprites.MinionShot;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.math.Rectangle;
 
 import java.lang.Math;
 
@@ -325,12 +326,15 @@ class Play extends State{
 
         if(minion.getStatus() == false) {
             sb.draw(minion.getTexture(), minion.getPosition().x, minion.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 10, cam.viewportHeight / 13, 1.0f, 1.0f, 180.0f);
-            for(MinionShot s : minion.getShots() ) {
-                if(s.collides(angel.getBounds()) && s.hit() == false){
+            if(minion.collides(angel.getBounds())){
+                angel.loseHealth(5);
+                minion.getPosition().set(200, 40, 0);
+            }
+            for (MinionShot s : minion.getShots()) {
+                if (s.collides(angel.getBounds()) && s.hit() == false) {
                     s.setHit(true);
                     angel.loseHealth(1);
-                }
-                else if(s.hit() == false){
+                } else if (s.hit() == false) {
                     s.setBounds(cam.viewportWidth / 20, cam.viewportHeight / 20);
                     sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, cam.viewportWidth / 20, cam.viewportHeight / 20);
                 }
@@ -342,6 +346,10 @@ class Play extends State{
 
         if(minion2.getStatus() == false && boss.getHealth() < 400) {
             sb.draw(minion2.getTexture(), minion2.getPosition().x, minion2.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 10, cam.viewportHeight / 13, 1.0f, 1.0f, 180.0f);
+            if(minion2.collides(angel.getBounds())){
+                angel.loseHealth(5);
+                minion2.getPosition().set(300, 200, 0);
+            }
             for(MinionShot s : minion2.getShots() ) {
                 if(s.collides(angel.getBounds()) && s.hit() == false){
                     s.setHit(true);
@@ -359,6 +367,10 @@ class Play extends State{
 
         if(minion3.getStatus() == false && boss.getHealth() < 300) {
             sb.draw(minion3.getTexture(), minion3.getPosition().x, minion3.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 10, cam.viewportHeight / 13, 1.0f, 1.0f, 180.0f);
+            if(minion3.collides(angel.getBounds())){
+                angel.loseHealth(5);
+                minion3.getPosition().set(800, 600, 0);
+            }
             for(MinionShot s : minion3.getShots() ) {
                 if(s.collides(angel.getBounds()) && s.hit() == false){
                     s.setHit(true);

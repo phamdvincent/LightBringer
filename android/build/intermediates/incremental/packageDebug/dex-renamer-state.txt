@@ -1,4 +1,4 @@
-#Sun Jul 30 13:27:31 CDT 2017
-base.0=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+#Sun Jul 30 17:02:10 CDT 2017
+base.0=C\:\\Users\\JoeGa\\Documents\\342\\FinalProject3\\LightBringer\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
-file.0=/Users/Vincent/Documents/LightBringer/android/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
+file.0=C\:\\Users\\JoeGa\\Documents\\342\\FinalProject3\\LightBringer\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
