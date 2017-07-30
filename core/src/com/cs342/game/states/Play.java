@@ -1,6 +1,7 @@
 package com.cs342.game.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
@@ -13,6 +14,7 @@ import com.cs342.game.sprites.Boss;
 import com.cs342.game.sprites.BossShot;
 import com.cs342.game.sprites.Minion;
 import com.cs342.game.sprites.MinionShot;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 import java.lang.Math;
 
@@ -32,6 +34,7 @@ class Play extends State{
     private Minion minion;
     private boolean minionMoveDown;
     private boolean minionMoveLeft;
+    private BitmapFont font;
 
     Play(GameStateManager gsm) {
         super(gsm);
@@ -48,6 +51,10 @@ class Play extends State{
         angel.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
         boss.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
         minion.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
+
+        font = new BitmapFont(true);
+        font.setColor(Color.GREEN);
+        font.getData().scale(5);
 
     }
 
@@ -70,6 +77,9 @@ class Play extends State{
     @Override
     public void update(float dt) {
         handleInput();
+        if(angel.getHealth() < 1)
+            gsm.set(new LoseScreen(gsm));
+
         background.move(0, 5f, 0);
         if(background.getPosition().y >= cam.viewportHeight) {
             background.getPosition().set(0, -cam.viewportHeight, 0);
@@ -208,6 +218,8 @@ class Play extends State{
                 }
             }
         }
+
+        font.draw(sb, "Health: " + angel.getHealth(), 0, cam.viewportHeight - font.getData().capHeight);
 
 
         sb.end();
