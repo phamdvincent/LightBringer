@@ -35,6 +35,7 @@ class Play extends State{
     private boolean minionMoveDown;
     private boolean minionMoveLeft;
     private BitmapFont font;
+    private BitmapFont font2;
 
     Play(GameStateManager gsm) {
         super(gsm);
@@ -55,6 +56,10 @@ class Play extends State{
         font = new BitmapFont(true);
         font.setColor(Color.GREEN);
         font.getData().scale(5);
+
+        font2 = new BitmapFont(true);
+        font2.setColor(Color.RED);
+        font2.getData().scale(5);
 
     }
 
@@ -79,6 +84,9 @@ class Play extends State{
         handleInput();
         if(angel.getHealth() < 1)
             gsm.set(new LoseScreen(gsm));
+
+        if(boss.getHealth() < 1)
+            gsm.set(new WinScreen(gsm));
 
         background.move(0, 5f, 0);
         if(background.getPosition().y >= cam.viewportHeight) {
@@ -175,13 +183,18 @@ class Play extends State{
         if(angel.getStatus() == false) {
             sb.draw(angel.getTexture(), angel.getPosition().x, angel.getPosition().y, angel.getBounds().width/2, angel.getBounds().height/2, cam.viewportWidth / 10, cam.viewportHeight/13,1.0f, 1.0f, 180.0f);
             for(AngelShot s : angel.getShots() ) {
-                s.setBounds(cam.viewportWidth / 40, cam.viewportHeight / 40);
-                sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 40, cam.viewportHeight / 40, 1.0f, 1.0f, 180.0f);
+                if (s.collides(boss.getBounds()) && s.hit() == false) {
+                    s.setHit(true);
+                    boss.loseHealth(1);
+                } else if (s.hit() == false) {
+                    s.setBounds(cam.viewportWidth / 40, cam.viewportHeight / 40);
+                    sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 40, cam.viewportHeight / 40, 1.0f, 1.0f, 180.0f);
+                }
             }
         }
 
         if(boss.getStatus() == false) {
-            sb.draw(boss.getTexture(), boss.getPosition().x, boss.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 10, cam.viewportHeight / 13, 1.0f, 1.0f, 180.0f);
+            sb.draw(boss.getTexture(), boss.getPosition().x, boss.getPosition().y, boss.getBounds().width/2, boss.getBounds().height/2, cam.viewportWidth / 10, cam.viewportHeight / 13, 1.0f, 1.0f, 180.0f);
             for(BossShot s : boss.getShots() ) {
                 if(s.collides(angel.getBounds()) && s.hit() == false){
                     s.setHit(true);
@@ -220,6 +233,7 @@ class Play extends State{
         }
 
         font.draw(sb, "Health: " + angel.getHealth(), 0, cam.viewportHeight - font.getData().capHeight);
+        font2.draw(sb, "Boss: " + boss.getHealth(), cam.viewportWidth/2, cam.viewportHeight - font.getData().capHeight);
 
 
         sb.end();

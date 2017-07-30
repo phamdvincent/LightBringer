@@ -3,9 +3,6 @@ package com.cs342.game.sprites;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
-/**
- * Created by Vincent on 7/17/17.
- */
 
 public class Animation {
 

@@ -7,9 +7,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
-/**
- * Created by Vincent on 7/17/17.
- */
 
 public class AngelShot {
 

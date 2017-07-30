@@ -12,14 +12,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.cs342.game.LightBringer;
 
-public class Menu extends State {
+public class WinScreen extends State {
 
     private Texture background;
     private TextButton button;
     private Skin skin;
     private BitmapFont font;
-private int x;
-    public  Menu(GameStateManager gsm) {
+    private int x;
+    public  WinScreen(GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(true);
         background = new Texture("background.png");
@@ -48,7 +48,7 @@ private int x;
         sb.begin();
 
         sb.draw(background, 0, 0, cam.viewportWidth, cam.viewportHeight);
-        font.draw(sb, "LightBringer\n Click to Play", 0, cam.viewportHeight/3);
+        font.draw(sb, "You win!", cam.viewportWidth/4, cam.viewportHeight/2);
 
         sb.end();
     }
