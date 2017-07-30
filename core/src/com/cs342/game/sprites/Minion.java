@@ -26,7 +26,7 @@ public class Minion {
     private boolean isDead;
     private int health;
 
-    public Minion(int x, int y) {
+    public Minion(float x, float y) {
         position = new Vector3(x, y, 0);
         velocity = new Vector3(0, 0, 0);
         texture = new Texture("minionSprite.png");
@@ -79,7 +79,7 @@ public class Minion {
             timer = 1;
 
         }
-        if(distNum > 200)   {
+        if(distNum > 100)   {
             for(int i = 0; i < minionShots.size; i++) {
                 minionShots.get(i).setHit(false);
                 minionShots.get(i).getPosition().set(this.getPosition().x -40, this.getPosition().y - 40, 0);
