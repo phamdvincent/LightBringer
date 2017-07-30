@@ -77,6 +77,9 @@ class Play extends State{
     @Override
     public void update(float dt) {
         handleInput();
+        if(angel.getHealth() < 1)
+            gsm.set(new LoseScreen(gsm));
+
         background.move(0, 5f, 0);
         if(background.getPosition().y >= cam.viewportHeight) {
             background.getPosition().set(0, -cam.viewportHeight, 0);

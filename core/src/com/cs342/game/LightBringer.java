@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.cs342.game.states.GameStateManager;
+import com.cs342.game.states.LoseScreen;
 import com.cs342.game.states.Menu;
 
 public class LightBringer extends ApplicationAdapter {
