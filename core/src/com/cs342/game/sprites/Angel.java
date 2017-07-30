@@ -64,7 +64,7 @@ public class Angel {
     public void shoot(float x, float y, float z, int frequency, float dt) {
         timer++;
         if(timer > frequency) {
-            angelShots.add(new AngelShot(((int) this.getPosition().x - 20), (int) this.getPosition().y));
+            angelShots.add(new AngelShot(((int)( this.getPosition().x + this.getBounds().width/2)), (int) (this.getPosition().y + this.getBounds().height/2)));
             timer = 0;
         }
         for(int i = 0; i < angelShots.size; i++) {

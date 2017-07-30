@@ -87,17 +87,18 @@ class Play extends State{
         if(boss.getStatus() == false) {
             moveMyBoss();
             boss.update(dt);
-            boss.shoot(2,2,dt);
+            boss.shoot(15,15,dt);
+            boss.straightShoot(0,25,dt);
         }
 
 
         if(minion.getStatus() == false) {
             moveMyMinion();
             minion.update(dt);
-            minion.shoot(2,2,dt);
+            minion.shoot(15,15,dt);
         }
 
-        System.out.println("Health: " + angel.getHealth());
+        //System.out.println("Health: " + angel.getHealth());
 
     }
 
@@ -162,7 +163,7 @@ class Play extends State{
         sb.draw(background2.getTexture(),background2.getPosition().x,background2.getPosition().y, cam.viewportWidth, cam.viewportHeight + 10);
 
         if(angel.getStatus() == false) {
-            sb.draw(angel.getTexture(), angel.getPosition().x, angel.getPosition().y, 50.0f, 40.0f, cam.viewportWidth / 10, cam.viewportHeight/13,1.0f, 1.0f, 180.0f);
+            sb.draw(angel.getTexture(), angel.getPosition().x, angel.getPosition().y, angel.getBounds().width/2, angel.getBounds().height/2, cam.viewportWidth / 10, cam.viewportHeight/13,1.0f, 1.0f, 180.0f);
             for(AngelShot s : angel.getShots() ) {
                 s.setBounds(cam.viewportWidth / 40, cam.viewportHeight / 40);
                 sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 40, cam.viewportHeight / 40, 1.0f, 1.0f, 180.0f);
@@ -172,6 +173,17 @@ class Play extends State{
         if(boss.getStatus() == false) {
             sb.draw(boss.getTexture(), boss.getPosition().x, boss.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 10, cam.viewportHeight / 13, 1.0f, 1.0f, 180.0f);
             for(BossShot s : boss.getShots() ) {
+                if(s.collides(angel.getBounds()) && s.hit() == false){
+                    s.setHit(true);
+                    angel.loseHealth(1);
+                }
+                else if(s.hit() == false){
+                    s.setBounds(cam.viewportWidth / 20, cam.viewportHeight / 20);
+                    sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, cam.viewportWidth / 20, cam.viewportHeight / 20);
+                }
+            }
+
+            for(BossShot s : boss.getStraightShots()) {
                 if(s.collides(angel.getBounds()) && s.hit() == false){
                     s.setHit(true);
                     angel.loseHealth(1);

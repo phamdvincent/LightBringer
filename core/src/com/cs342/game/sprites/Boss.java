@@ -21,20 +21,26 @@ public class Boss {
     private Texture texture;
     private Animation bossAnimation;
     private Array<BossShot> bossShots;
+    private Array<BossShot> straightShots;
     private int timer;
+    private int timer2;
     private int distNum;
+    private int distNum2;
     private int health;
     private boolean isDead;
 
 
-    public Boss(int x, int y) {
+    public Boss(float x, float y) {
         position = new Vector3(x, y, 0);
         velocity = new Vector3(0, 0, 0);
         texture = new Texture("bossSprite.png");
         bossAnimation = new Animation(new TextureRegion(texture), 3 , 0.5f);
         bossShots = new Array<BossShot>();
+        straightShots = new Array<BossShot>();
         timer = 0;
+        timer2 = 0;
         distNum = 0;
+        distNum2 = 0;
         health = 1000;
         isDead = false;
 
@@ -87,7 +93,7 @@ public class Boss {
             timer = 1;
 
         }
-        if(distNum > 200)   {
+        if(distNum > 100)   {
         for(int i = 0; i < bossShots.size; i++) {
                 bossShots.get(i).setHit(false);
                 bossShots.get(i).getPosition().set(this.getPosition().x -40, this.getPosition().y - 40, 0);
@@ -101,15 +107,44 @@ public class Boss {
             bossShots.get(i).update(dt);
         }
 
-
-
-
-
         distNum++;
+    }
+
+    public void straightShoot(float x, float y, float dt) {
+        if(timer2 == 0) {
+            straightShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, x, y,0));
+//            straightShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, x, y,0));
+//            straightShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, x, y,0));
+//            straightShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, x, y,0));
+//            straightShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, x, y,0));
+//            straightShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, x, y,0));
+            timer2 = 1;
+
+        }
+
+            for(int i = 0; i < straightShots.size; i++) {
+                if(distNum2 > 20) {
+                    straightShots.get(i).setHit(false);
+                    straightShots.get(i).getPosition().set(this.getPosition().x - 40, this.getPosition().y - 40, 0);
+                    distNum2 = 0;
+                }
+            }
+
+
+        for(int i = 0; i < straightShots.size; i++) {
+            straightShots.get(i).move();
+            straightShots.get(i).update(dt);
+        }
+
+        distNum2++;
     }
 
     public Array<BossShot> getShots() {
         return bossShots;
+    }
+
+    public Array<BossShot> getStraightShots() {
+        return straightShots;
     }
 
     public void setBounds(float width, float height) {
