@@ -11,6 +11,9 @@ import com.cs342.game.states.GameStateManager;
 import com.cs342.game.states.LoseScreen;
 import com.cs342.game.states.Menu;
 
+/**
+ * Class to create the game.
+ */
 public class LightBringer extends ApplicationAdapter {
 
 	public static final int WIDTH = 480;
@@ -21,7 +24,9 @@ public class LightBringer extends ApplicationAdapter {
 
 	SpriteBatch batch;
 
-	
+	/**
+	 * Method to create starting assets.
+	 */
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -35,6 +40,9 @@ public class LightBringer extends ApplicationAdapter {
 
 	}
 
+	/**
+	 * Method to render any objects.
+	 */
 	@Override
 	public void render () {
 
@@ -42,7 +50,10 @@ public class LightBringer extends ApplicationAdapter {
 		gsm.update(Gdx.graphics.getDeltaTime());
 		gsm.render(batch);
 	}
-	
+
+	/**
+	 * Method to dispose any assets used in the class.
+	 */
 	@Override
 	public void dispose () {
 		music.dispose();

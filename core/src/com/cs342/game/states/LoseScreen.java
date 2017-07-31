@@ -12,12 +12,20 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.cs342.game.LightBringer;
 
+/**
+ * Class to manage the losing screen.
+ */
 public class LoseScreen extends State {
 
     private Texture background;
 
     private BitmapFont font;
 
+    /**
+     * Constructor to create the losing screen.
+     *
+     * @param gsm GameStateManager Variable used to control the state stack.
+     */
     public  LoseScreen(GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(true);
@@ -29,6 +37,9 @@ public class LoseScreen extends State {
 
     }
 
+    /**
+     * Method to handle any input by the user.
+     */
     @Override
     protected void handleInput() {
         if(Gdx.input.justTouched()) {
@@ -36,11 +47,21 @@ public class LoseScreen extends State {
         }
     }
 
+    /**
+     * Method to update frames.
+     *
+     * @param dt float Number to indicate updates.
+     */
     @Override
     public void update(float dt) {
         handleInput();
     }
 
+    /**
+     * Method that draws the objects used in the class
+     *
+     * @param sb SpriteBatch Variable used to control drawing.
+     */
     @Override
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
@@ -52,6 +73,9 @@ public class LoseScreen extends State {
         sb.end();
     }
 
+    /**
+     * Method to dispose any assets used in this class
+     */
     @Override
     public void dispose() {
         font.dispose();

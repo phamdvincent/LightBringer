@@ -12,10 +12,19 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.cs342.game.LightBringer;
 
+/**
+ * Class to manage a win screen.
+ */
 public class WinScreen extends State {
 
     private Texture background;
     private BitmapFont font;
+
+    /**
+     * Constructor to create a win screen.
+     *
+     * @param gsm GameStateManager Variable to control State stack.
+     */
     public  WinScreen(GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(true);
@@ -27,6 +36,9 @@ public class WinScreen extends State {
 
     }
 
+    /**
+     * Method to handle user input.
+     */
     @Override
     protected void handleInput() {
         if(Gdx.input.justTouched()) {
@@ -34,11 +46,21 @@ public class WinScreen extends State {
         }
     }
 
+    /**
+     * Method to update frames.
+     *
+     * @param dt float Number used to indicate updates.
+     */
     @Override
     public void update(float dt) {
         handleInput();
     }
 
+    /**
+     * Method to control drawing of objects.
+     *
+     * @param sb SpriteBatch Variable to control drawing.
+     */
     @Override
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
@@ -50,6 +72,9 @@ public class WinScreen extends State {
         sb.end();
     }
 
+    /**
+     * Method to dispose any assets used in the class.
+     */
     @Override
     public void dispose() {
         font.dispose();

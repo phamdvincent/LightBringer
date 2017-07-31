@@ -22,7 +22,9 @@ import java.lang.Math;
 
 import static com.badlogic.gdx.Input.Keys.X;
 
-
+/**
+ * Class to control the play screen of the game.
+ */
 class Play extends State{
 
     private static final double PI = 3.14;
@@ -50,6 +52,11 @@ class Play extends State{
     private Sound lightImpact;
     private Texture dmg;
 
+    /**
+     * Constructor to build the starting objects in the game.
+     *
+     * @param gsm GameStateManager Variable to control State stack.
+     */
     Play(GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(true);
@@ -87,6 +94,9 @@ class Play extends State{
 
     }
 
+    /**
+     * Method to handle user input.
+     */
     @Override
     protected void handleInput() {
         if(Gdx.input.isTouched())
@@ -102,6 +112,11 @@ class Play extends State{
 
     }
 
+    /**
+     * Method to update frames.
+     *
+     * @param dt float Number used to indicate updates.
+     */
     @Override
     public void update(float dt) {
         handleInput();
@@ -159,6 +174,9 @@ class Play extends State{
 
     }
 
+    /**
+     * Method to move the boss.
+     */
     public void moveMyBoss(){
         if(bossMove == false) {
             if(boss.getPosition().x > cam.viewportWidth - 50) {
@@ -173,6 +191,9 @@ class Play extends State{
         }
     }
 
+    /**
+     * Method to move the first minion.
+     */
     public void moveMyMinion(){
         if(minionMoveDown == true && minionMoveLeft == true) {
             if(minion.getPosition().x < 40) {
@@ -213,8 +234,9 @@ class Play extends State{
     }
 
 
-
-
+    /**
+     * Method to control second minion.
+     */
     public void moveMyMinion2(){
         if(minionMoveDown2 == true && minionMoveLeft2 == true) {
             if(minion2.getPosition().x < 40) {
@@ -254,6 +276,9 @@ class Play extends State{
         }
     }
 
+    /**
+     * Method to control the third minion.
+     */
     public void moveMyMinion3(){
         if(minionMoveDown3 == true && minionMoveLeft3 == true) {
             if(minion3.getPosition().x < 40) {
@@ -294,7 +319,9 @@ class Play extends State{
     }
 
 
-
+    /**
+     * Method to control the fourth minion.
+     */
     public void moveMyMinion4(){
         if(minionMoveDown4 == true && minionMoveLeft4 == true) {
             if(minion4.getPosition().x < 40) {
@@ -334,6 +361,11 @@ class Play extends State{
         }
     }
 
+    /**
+     * Method to draw the objects in the class.
+     *
+     * @param sb SpriteBatch Variable to control drawing.
+     */
     @Override
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
@@ -474,6 +506,9 @@ class Play extends State{
         sb.end();
     }
 
+    /**
+     * Method to dispose any assets used in the class.
+     */
     @Override
     public void dispose() {
         background.dispose();
