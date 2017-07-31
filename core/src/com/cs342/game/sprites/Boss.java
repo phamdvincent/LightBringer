@@ -28,6 +28,7 @@ public class Boss {
     private int distNum2;
     private int health;
     private boolean isDead;
+    private Sound explosion;
 
 
     public Boss(float x, float y) {
@@ -43,7 +44,7 @@ public class Boss {
         distNum2 = 0;
         health = 500;
         isDead = false;
-
+        explosion = Gdx.audio.newSound(Gdx.files.internal("explosion.mp3"));
         bounds = new Rectangle(x, y, TEXTURE_WIDTH, TEXTURE_HEIGHT);
     }
 
@@ -71,7 +72,7 @@ public class Boss {
 
 
         if(timer == 0) {
-
+            explosion.play(0.4f);
             bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,0, y,0));
             bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,-x, y,0));
             bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, x, y,0));
@@ -94,6 +95,7 @@ public class Boss {
 
         }
         if(distNum > 100)   {
+            explosion.play(0.4f);
         for(int i = 0; i < bossShots.size; i++) {
                 bossShots.get(i).setHit(false);
                 bossShots.get(i).getPosition().set(this.getPosition().x -40, this.getPosition().y - 40, 0);
@@ -176,6 +178,7 @@ public class Boss {
     }
 
     public void dispose() {
+        explosion.dispose();
         texture.dispose();
     }
 }

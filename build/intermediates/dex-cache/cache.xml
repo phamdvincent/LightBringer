@@ -3,12 +3,12 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\JoeGa\Documents\342\FinalProject3\LightBringer\core\build\libs\core-1.0.jar"
+        jar="/Users/Vincent/Documents/LightBringer/core/build/libs/core-1.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="f545bc4855cb9abc3dbf28d9ad560f4edbbfaf92">
-        <dex dex="C:\Users\JoeGa\Documents\342\FinalProject3\LightBringer\android\build\intermediates\pre-dexed\debug\core-1.0_b34a4c03c7dfd7662fa1165f3378fe05ef0593ab.jar" />
+        sha1="4672fb13f375676574ee7655a7c77534557a2ba0">
+        <dex dex="/Users/Vincent/Documents/LightBringer/android/build/intermediates/pre-dexed/debug/core-1.0_7e6c6bcb582c5d5a4f11db0845ad678334c6824a.jar" />
     </item>
 
 </items>

@@ -25,6 +25,7 @@ public class Minion {
     private int distNum;
     private boolean isDead;
     private int health;
+    private Sound explosion;
 
     public Minion(float x, float y) {
         position = new Vector3(x, y, 0);
@@ -36,7 +37,7 @@ public class Minion {
         distNum = 0;
         isDead = false;
         health = 50;
-
+        explosion = Gdx.audio.newSound(Gdx.files.internal("explosion.mp3"));
         bounds = new Rectangle(x, y, TEXTURE_WIDTH, TEXTURE_HEIGHT);
 
     }
@@ -64,7 +65,7 @@ public class Minion {
 
 
         if(timer == 0) {
-
+            explosion.play(0.4f);
             minionShots.add(new MinionShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, 0, y,0));
             minionShots.add(new MinionShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,-x, y,0));
             minionShots.add(new MinionShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, x, y,0));
@@ -80,6 +81,7 @@ public class Minion {
 
         }
         if(distNum > 100)   {
+            explosion.play(0.4f);
             for(int i = 0; i < minionShots.size; i++) {
                 minionShots.get(i).setHit(false);
                 minionShots.get(i).getPosition().set(this.getPosition().x -40, this.getPosition().y - 40, 0);
@@ -133,6 +135,7 @@ public class Minion {
     }
 
     public void dispose() {
+        explosion.dispose();
         texture.dispose();
     }
 }

@@ -1,10 +1,14 @@
 [
     {
-        "merged": "C:\\Users\\JoeGa\\Documents\\342\\FinalProject3\\LightBringer\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_launcher.png",
-        "source": "C:\\Users\\JoeGa\\Documents\\342\\FinalProject3\\LightBringer\\android\\res\\drawable-xxhdpi\\ic_launcher.png"
+        "merged": "/Users/Vincent/Documents/LightBringer/C:\\Users\\JoeGa\\Documents\\342\\FinalProject3\\LightBringer\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_launcher.png",
+        "source": "/Users/Vincent/Documents/LightBringer/C:\\Users\\JoeGa\\Documents\\342\\FinalProject3\\LightBringer\\android\\res\\drawable-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\Vincent\\Documents\\LightBringer\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_launcher.png",
-        "source": "C:\\Users\\Vincent\\Documents\\LightBringer\\android\\res\\drawable-xxhdpi\\ic_launcher.png"
+        "merged": "/Users/Vincent/Documents/LightBringer/android/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_launcher.png",
+        "source": "/Users/Vincent/Documents/LightBringer/android/res/drawable-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/Vincent/Documents/LightBringer/C:\\Users\\Vincent\\Documents\\LightBringer\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_launcher.png",
+        "source": "/Users/Vincent/Documents/LightBringer/C:\\Users\\Vincent\\Documents\\LightBringer\\android\\res\\drawable-xxhdpi\\ic_launcher.png"
     }
 ]

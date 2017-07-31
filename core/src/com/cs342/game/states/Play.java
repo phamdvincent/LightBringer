@@ -1,6 +1,7 @@
 package com.cs342.game.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -43,6 +44,7 @@ class Play extends State{
     private boolean minionMoveLeft3;
     private BitmapFont font;
     private BitmapFont font2;
+    private Sound lightImpact;
 
     Play(GameStateManager gsm) {
         super(gsm);
@@ -65,6 +67,7 @@ class Play extends State{
         angel.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
         boss.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
         minion.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
+        lightImpact = Gdx.audio.newSound(Gdx.files.internal("slash.mp3"));
 
         font = new BitmapFont(true);
         font.setColor(Color.GREEN);
@@ -291,6 +294,7 @@ class Play extends State{
             for(AngelShot s : angel.getShots() ) {
                 if (s.collides(boss.getBounds()) && s.hit() == false) {
                     s.setHit(true);
+                    lightImpact.play(0.4f);
                     boss.loseHealth(1);
                 } else if (s.hit() == false) {
                     s.setBounds(cam.viewportWidth / 40, cam.viewportHeight / 40);
@@ -398,8 +402,11 @@ class Play extends State{
         background.dispose();
         background2.dispose();
         angel.dispose();
-
+        minion.dispose();
+        minion2.dispose();
+        minion3.dispose();
         boss.dispose();
+        lightImpact.dispose();
         System.out.println("Play disposed");
     }
 }
