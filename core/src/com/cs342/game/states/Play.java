@@ -36,12 +36,15 @@ class Play extends State{
     private Minion minion;
     private Minion minion2;
     private Minion minion3;
+    private Minion minion4;
     private boolean minionMoveDown;
     private boolean minionMoveLeft;
     private boolean minionMoveDown2;
     private boolean minionMoveLeft2;
     private boolean minionMoveDown3;
     private boolean minionMoveLeft3;
+    private boolean minionMoveDown4;
+    private boolean minionMoveLeft4;
     private BitmapFont font;
     private BitmapFont font2;
     private Sound lightImpact;
@@ -65,6 +68,9 @@ class Play extends State{
         minion3 = new Minion(800, 600);
         minionMoveLeft3 = true;
         minionMoveDown3 = true;
+        minion4 = new Minion(100, 700);
+        minionMoveLeft4 = true;
+        minionMoveDown4 = true;
         angel.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
         boss.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
         minion.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
@@ -93,7 +99,6 @@ class Play extends State{
             boss.setStatus(true);
             minion.setStatus(true);
         }
-            //angel = null;
 
     }
 
@@ -146,7 +151,11 @@ class Play extends State{
             minion3.shoot(15,15,dt);
         }
 
-        //System.out.println("Health: " + angel.getHealth());
+        if(minion3.getStatus() == false && boss.getHealth() < 200) {
+            moveMyMinion4();
+            minion4.update(dt);
+            minion4.shoot(15,15,dt);
+        }
 
     }
 
@@ -284,6 +293,47 @@ class Play extends State{
         }
     }
 
+
+
+    public void moveMyMinion4(){
+        if(minionMoveDown4 == true && minionMoveLeft4 == true) {
+            if(minion4.getPosition().x < 40) {
+                minionMoveLeft4 = false;
+            }
+            if(minion4.getPosition().y >= cam.viewportHeight - 20) {
+                minionMoveDown4 = false;
+            }
+            minion4.getPosition().add(-5, 5, 0);
+        }
+        if(minionMoveDown4 == true && minionMoveLeft4 == false) {
+            if(minion4.getPosition().x >= cam.viewportWidth - 20) {
+                minionMoveLeft4 = true;
+            }
+            if(minion4.getPosition().y >= cam.viewportHeight - 20) {
+                minionMoveDown4 = false;
+            }
+            minion4.getPosition().add(5, 5, 0);
+        }
+        if(minionMoveDown4 == false && minionMoveLeft4 == true){
+            if(minion4.getPosition().x < 40) {
+                minionMoveLeft4 = false;
+            }
+            if(minion4.getPosition().y <= 40) {
+                minionMoveDown4 = true;
+            }
+            minion4.getPosition().add(-5, -5, 0);
+        }
+        if(minionMoveDown4 == false && minionMoveLeft4 == false){
+            if(minion4.getPosition().x >= cam.viewportWidth - 20) {
+                minionMoveLeft4 = true;
+            }
+            if(minion4.getPosition().y <= 40) {
+                minionMoveDown4 = true;
+            }
+            minion4.getPosition().add(5, -5, 0);
+        }
+    }
+
     @Override
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
@@ -326,7 +376,7 @@ class Play extends State{
                 if (s.collides(boss.getBounds()) && s.hit() == false) {
                     sb.draw(dmg, boss.getPosition().x - boss.getBounds().width/2, boss.getPosition().y, 200,200);
                     s.setHit(true);
-                    lightImpact.play(0.1f);
+                    lightImpact.play(0.4f);
                     boss.loseHealth(1);
                 } else if (s.hit() == false) {
                     s.setBounds(cam.viewportWidth / 40, cam.viewportHeight / 40);
@@ -396,6 +446,25 @@ class Play extends State{
         }
 
 
+        if(minion4.getStatus() == false && boss.getHealth() < 200) {
+            sb.draw(minion4.getTexture(), minion4.getPosition().x, minion4.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 10, cam.viewportHeight / 13, 1.0f, 1.0f, 180.0f);
+            if(minion4.collides(angel.getBounds())){
+                angel.loseHealth(5);
+                minion4.getPosition().set(100, 700, 0);
+            }
+            for(MinionShot s : minion4.getShots() ) {
+                if(s.collides(angel.getBounds()) && s.hit() == false){
+                    s.setHit(true);
+                    angel.loseHealth(1);
+                }
+                else if(s.hit() == false){
+                    s.setBounds(cam.viewportWidth / 20, cam.viewportHeight / 20);
+                    sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, cam.viewportWidth / 20, cam.viewportHeight / 20);
+                }
+            }
+        }
+
+
 
 
         font.draw(sb, "Health: " + angel.getHealth(), 0, 0);
@@ -414,6 +483,7 @@ class Play extends State{
         minion.dispose();
         minion2.dispose();
         minion3.dispose();
+        minion4.dispose();
         boss.dispose();
         lightImpact.dispose();
         System.out.println("Play disposed");
