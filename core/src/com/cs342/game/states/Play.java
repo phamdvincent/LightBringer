@@ -45,6 +45,7 @@ class Play extends State{
     private BitmapFont font;
     private BitmapFont font2;
     private Sound lightImpact;
+    private Texture dmg;
 
     Play(GameStateManager gsm) {
         super(gsm);
@@ -68,6 +69,7 @@ class Play extends State{
         boss.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
         minion.setBounds(cam.viewportWidth / 10, cam.viewportHeight/13);
         lightImpact = Gdx.audio.newSound(Gdx.files.internal("slash.mp3"));
+        dmg = new Texture("light.png");
 
         font = new BitmapFont(true);
         font.setColor(Color.GREEN);
@@ -289,19 +291,7 @@ class Play extends State{
         sb.draw(background.getTexture(),background.getPosition().x,background.getPosition().y, cam.viewportWidth, cam.viewportHeight + 10);
         sb.draw(background2.getTexture(),background2.getPosition().x,background2.getPosition().y, cam.viewportWidth, cam.viewportHeight + 10);
 
-        if(angel.getStatus() == false) {
-            sb.draw(angel.getTexture(), angel.getPosition().x, angel.getPosition().y, angel.getBounds().width/2, angel.getBounds().height/2, cam.viewportWidth / 10, cam.viewportHeight/13,1.0f, 1.0f, 180.0f);
-            for(AngelShot s : angel.getShots() ) {
-                if (s.collides(boss.getBounds()) && s.hit() == false) {
-                    s.setHit(true);
-                    lightImpact.play(0.4f);
-                    boss.loseHealth(1);
-                } else if (s.hit() == false) {
-                    s.setBounds(cam.viewportWidth / 40, cam.viewportHeight / 40);
-                    sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 40, cam.viewportHeight / 40, 1.0f, 1.0f, 180.0f);
-                }
-            }
-        }
+
 
         if(boss.getStatus() == false) {
             sb.draw(boss.getTexture(), boss.getPosition().x, boss.getPosition().y, boss.getBounds().width/2, boss.getBounds().height/2, cam.viewportWidth / 10, cam.viewportHeight / 13, 1.0f, 1.0f, 180.0f);
@@ -327,6 +317,24 @@ class Play extends State{
                 }
             }
         }
+
+
+
+        if(angel.getStatus() == false) {
+            sb.draw(angel.getTexture(), angel.getPosition().x, angel.getPosition().y, angel.getBounds().width/2, angel.getBounds().height/2, cam.viewportWidth / 10, cam.viewportHeight/13,1.0f, 1.0f, 180.0f);
+            for(AngelShot s : angel.getShots() ) {
+                if (s.collides(boss.getBounds()) && s.hit() == false) {
+                    sb.draw(dmg, boss.getPosition().x - boss.getBounds().width/2, boss.getPosition().y, 200,200);
+                    s.setHit(true);
+                    lightImpact.play(0.1f);
+                    boss.loseHealth(1);
+                } else if (s.hit() == false) {
+                    s.setBounds(cam.viewportWidth / 40, cam.viewportHeight / 40);
+                    sb.draw(s.getTexture(), s.getPosition().x, s.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 40, cam.viewportHeight / 40, 1.0f, 1.0f, 180.0f);
+                }
+            }
+        }
+
 
         if(minion.getStatus() == false) {
             sb.draw(minion.getTexture(), minion.getPosition().x, minion.getPosition().y, 10.0f, 10.0f, cam.viewportWidth / 10, cam.viewportHeight / 13, 1.0f, 1.0f, 180.0f);
@@ -401,6 +409,7 @@ class Play extends State{
     public void dispose() {
         background.dispose();
         background2.dispose();
+        dmg.dispose();
         angel.dispose();
         minion.dispose();
         minion2.dispose();

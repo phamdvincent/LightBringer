@@ -81,7 +81,7 @@ public class Minion {
 
         }
         if(distNum > 100)   {
-            explosion.play(0.4f);
+            explosion.play(0.1f);
             for(int i = 0; i < minionShots.size; i++) {
                 minionShots.get(i).setHit(false);
                 minionShots.get(i).getPosition().set(this.getPosition().x -40, this.getPosition().y - 40, 0);

@@ -72,7 +72,7 @@ public class Boss {
 
 
         if(timer == 0) {
-            explosion.play(0.4f);
+            explosion.play(0.1f);
             bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,0, y,0));
             bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y,-x, y,0));
             bossShots.add(new BossShot(((int) this.getPosition().x - 40), (int) this.getPosition().y, x, y,0));
@@ -95,7 +95,7 @@ public class Boss {
 
         }
         if(distNum > 100)   {
-            explosion.play(0.4f);
+            explosion.play(0.2f);
         for(int i = 0; i < bossShots.size; i++) {
                 bossShots.get(i).setHit(false);
                 bossShots.get(i).getPosition().set(this.getPosition().x -40, this.getPosition().y - 40, 0);
