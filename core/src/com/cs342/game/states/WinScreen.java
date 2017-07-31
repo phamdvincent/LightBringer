@@ -15,10 +15,7 @@ import com.cs342.game.LightBringer;
 public class WinScreen extends State {
 
     private Texture background;
-    private TextButton button;
-    private Skin skin;
     private BitmapFont font;
-    private int x;
     public  WinScreen(GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(true);

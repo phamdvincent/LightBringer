@@ -27,7 +27,7 @@ public class LightBringer extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		music = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
 		music.setLooping(true);
-		music.setVolume(1.0f);
+		music.setVolume(1.2f);
 		music.play();
 		gsm = new GameStateManager();
 		Gdx.gl.glClearColor(1, 0, 0, 1);

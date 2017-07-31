@@ -376,7 +376,7 @@ class Play extends State{
                 if (s.collides(boss.getBounds()) && s.hit() == false) {
                     sb.draw(dmg, boss.getPosition().x - boss.getBounds().width/2, boss.getPosition().y, 200,200);
                     s.setHit(true);
-                    lightImpact.play(0.4f);
+                    lightImpact.play(0.2f);
                     boss.loseHealth(1);
                 } else if (s.hit() == false) {
                     s.setBounds(cam.viewportWidth / 40, cam.viewportHeight / 40);

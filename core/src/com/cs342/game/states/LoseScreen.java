@@ -15,10 +15,9 @@ import com.cs342.game.LightBringer;
 public class LoseScreen extends State {
 
     private Texture background;
-    private TextButton button;
-    private Skin skin;
+
     private BitmapFont font;
-    private int x;
+
     public  LoseScreen(GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(true);

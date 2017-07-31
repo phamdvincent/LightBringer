@@ -3,6 +3,9 @@ package com.cs342.game.sprites;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
+/**
+ * Class to control the animations of the sprites.
+ */
 
 public class Animation {
 
@@ -12,6 +15,13 @@ public class Animation {
     private int frameCount;
     private int frame;
 
+    /**
+     * Constructor to create Animation cycle.
+     *
+     * @param region TextureRegion Takes in sprite sheet.
+     * @param frameCount int Number of sprites in the sprite sheet.
+     * @param cycleTime float Speed of cycling through sprites.
+     */
     public Animation(TextureRegion region, int frameCount, float cycleTime) {
         frames = new Array<TextureRegion>();
         int frameWidth = region.getRegionWidth() / frameCount;
@@ -23,6 +33,11 @@ public class Animation {
         frame = 0;
     }
 
+    /**
+     * Method to update the animation
+     *
+     * @param dt float Takes in update of time.
+     */
     public void update(float dt) {
         currentFrameTime += dt;
         if(currentFrameTime > maxFrameTime) {
@@ -35,6 +50,11 @@ public class Animation {
         }
     }
 
+    /**
+     * Method to return the frame the animation is at.
+     *
+     * @return TextureRegion Returns the specific frame.
+     */
     public TextureRegion getFrame() {
         return frames.get(frame);
     }
