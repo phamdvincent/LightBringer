@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Jul 31 08:42:55 CDT 2017
+#Mon Jul 31 09:18:43 CDT 2017
 25.file=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug/music.mp3
 25.base=/Users/Vincent/Documents/LightBringer/android/build/intermediates/assets/debug
 22.set=JAVA_RESOURCE
